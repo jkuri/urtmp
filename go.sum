@@ -1,3 +1,5 @@
+github.com/jkuri/statik v0.3.0 h1:nbF3lthYNNMjLHDf69xeC2mAheJ31PejewdzsQNEDZo=
+github.com/jkuri/statik v0.3.0/go.mod h1:Xug6KLQpQ4dwObWPl0cTq38rIapcpsSOwBNmyeaIaIU=
 github.com/nareix/joy5 v0.0.0-20210317075623-2c912ca30590 h1:PnxRU8L8Y2q82vFC2QdNw23Dm2u6WrjecIdpXjiYbXM=
 github.com/nareix/joy5 v0.0.0-20210317075623-2c912ca30590/go.mod h1:XmAOs6UJXpNXRwKk+KY/nv5kL6xXYXyellk+A1pTlko=
 github.com/spf13/cobra v0.0.4-0.20190109003409-7547e83b2d85/go.mod h1:1l0Ry5zgKvJasoi3XT1TypsSe7PqH0Sj9dhYf7v3XqQ=

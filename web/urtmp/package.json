@@ -14,5 +14,8 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "webpack serve --content-base public"
+  },
+  "dependencies": {
+    "mpegts.js": "^1.6.7"
   }
 }

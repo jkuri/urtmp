@@ -11,7 +11,6 @@ type RTMPServer interface {
 	// Stop stops the RTMP server.
 	Stop() error
 
-	// Handler returns an http.HandlerFunc for
-	// streaming videos in flv format via HTTP.
-	Handler() http.HandlerFunc
+	// Handler returns an *http.ServeMux, the API router.
+	Handler() *http.ServeMux
 }

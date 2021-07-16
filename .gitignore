@@ -1,2 +1,3 @@
 build/
+internal/ui/
 .DS_Store/

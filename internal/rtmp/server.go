@@ -1,11 +1,10 @@
 package rtmp
 
 import (
-	"io"
 	"log"
 	"net"
 	"net/http"
-	"path"
+	"strings"
 
 	"github.com/jkuri/rtmp-server/internal/core"
 	"github.com/jkuri/rtmp-server/pkg/render"
@@ -79,9 +78,18 @@ func (s *server) Stop() error {
 	return nil
 }
 
-func (s *server) Handler() http.HandlerFunc {
+func (s *server) Handler() *http.ServeMux {
+	mux := http.NewServeMux()
+	mux.HandleFunc("/api/v1/live/", s.liveHandler())
+	mux.HandleFunc("/api/v1/streams", s.streamsHandler())
+	return mux
+}
+
+func (s *server) liveHandler() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		id := path.Clean(r.URL.Path)
+		splitted := strings.Split(r.URL.Path, "/")
+		relPath := append(splitted[:1], splitted[3:]...)
+		id := strings.Join(relPath, "/")
 
 		if !s.streams.exists(id) {
 			render.NotFoundError(w, "stream does not exists")
@@ -110,12 +118,8 @@ func (s *server) Handler() http.HandlerFunc {
 	}
 }
 
-type writeFlusher struct {
-	httpflusher http.Flusher
-	io.Writer
-}
+func (s *server) streamsHandler() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
 
-func (w writeFlusher) Flush() error {
-	w.httpflusher.Flush()
-	return nil
+	}
 }

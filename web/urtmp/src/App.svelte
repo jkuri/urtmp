@@ -1,4 +1,6 @@
 <script>
+  import mpegts from 'mpegts.js';
+
 	export let name;
 
   fetch('/api/v1/streams')
@@ -9,8 +11,10 @@
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<h1>Hello!</h1>
+  <div class="video">
+
+  </div>
 </main>
 
 <style>
