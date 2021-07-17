@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Stream } from '../models/stream.model';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class APIService {
   constructor(private http: HttpClient) {}
 

@@ -12,7 +12,7 @@ import (
 	"github.com/jkuri/urtmp/internal/core"
 )
 
-const addr = "127.0.0.1:8081"
+const addr = "127.0.0.1:8010"
 
 // server contains options and methods for running zero-copy
 // websocket server on straight TCP connection, use in a

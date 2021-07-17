@@ -5,6 +5,7 @@ import (
 	"net"
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/jkuri/urtmp/internal/core"
 	"github.com/jkuri/urtmp/pkg/render"
@@ -49,11 +50,18 @@ func (s *server) Run(addr string) error {
 		stream, remove := s.streams.add(c.URL.Path, c.Publishing)
 		defer remove()
 
+		go func() {
+			time.Sleep(time.Millisecond * 100)
+			s.ws.Broadcast("/events", map[string]interface{}{})
+		}()
+
 		if c.Publishing {
 			stream.setPub(c)
 		} else {
 			stream.addSub(c.CloseNotify(), c)
 		}
+
+		s.ws.Broadcast("/events", map[string]interface{}{})
 	}
 
 	go func() {
@@ -100,6 +108,11 @@ func (s *server) liveHandler() http.HandlerFunc {
 
 		stream, remove := s.streams.add(id, false)
 
+		go func() {
+			time.Sleep(time.Millisecond * 100)
+			s.ws.Broadcast("/events", map[string]interface{}{})
+		}()
+
 		w.Header().Set("Content-Type", "video/x-flv")
 		w.Header().Set("Transfer-Encoding", "chunked")
 		w.Header().Set("Access-Control-Allow-Origin", "*")
@@ -114,6 +127,7 @@ func (s *server) liveHandler() http.HandlerFunc {
 			<-r.Context().Done()
 			remove()
 			closech <- true
+			s.ws.Broadcast("/events", map[string]interface{}{})
 		}()
 
 		stream.addSub(closech, muxer)
