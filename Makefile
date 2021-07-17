@@ -12,7 +12,7 @@ statik:
 	@if [ ! -r "internal/ui/statik.go" ]; then statik -dest ./internal -p ui -src ./web/urtmp/dist/urtmp; fi
 
 clean:
-	@rm -rf ./build ./web/urtmp/public/build ./internal/ui
+	@rm -rf ./build ./web/urtmp/dist/urtmp ./internal/ui
 
 install:
 	@go install github.com/jkuri/statik/...@latest
