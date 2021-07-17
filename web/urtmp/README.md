@@ -1,64 +1,27 @@
-# svelte app
+# Urtmp
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template-webpack.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
+## Development server
 
-```bash
-npx degit sveltejs/template-webpack svelte-app
-cd svelte-app
-```
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
+## Code scaffolding
 
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Get started
+## Build
 
-Install the dependencies...
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-```bash
-cd svelte-app
-npm install
-```
+## Running unit tests
 
-...then start webpack:
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-```bash
-npm run dev
-```
+## Running end-to-end tests
 
-Navigate to [localhost:8080](http://localhost:8080). You should see your app running. Edit a component file in `src`, save it, and the page should reload with your changes.
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
+## Further help
 
-## Deploying to the web
-
-### With [now](https://zeit.co/now)
-
-Install `now` if you haven't already:
-
-```bash
-npm install -g now
-```
-
-Then, from within your project folder:
-
-```bash
-now
-```
-
-As an alternative, use the [Now desktop client](https://zeit.co/download) and simply drag the unzipped project folder to the taskbar icon.
-
-### With [surge](https://surge.sh/)
-
-Install `surge` if you haven't already:
-
-```bash
-npm install -g surge
-```
-
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public
-```
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
