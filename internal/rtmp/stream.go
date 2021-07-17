@@ -3,6 +3,7 @@ package rtmp
 import (
 	"context"
 	"log"
+	"strings"
 	"sync"
 	"sync/atomic"
 	"unsafe"
@@ -173,4 +174,20 @@ func (ss *streams) exists(k string) bool {
 	defer ss.l.Unlock()
 	_, ok := ss.m[k]
 	return ok
+}
+
+type resp struct {
+	Key         string `json:"key"`
+	Subscribers int    `json:"subscribers"`
+}
+
+func (ss *streams) list() []resp {
+	ss.l.Lock()
+	defer ss.l.Unlock()
+	var result []resp
+	for key, stream := range ss.m {
+		key = strings.Replace(key, "/live/", "", 1)
+		result = append(result, resp{Key: key, Subscribers: int(stream.n) - 1})
+	}
+	return result
 }

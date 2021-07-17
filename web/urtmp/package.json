@@ -17,6 +17,7 @@
     "@angular/platform-browser": "~12.1.2",
     "@angular/platform-browser-dynamic": "~12.1.2",
     "@angular/router": "~12.1.2",
+    "@ngneat/until-destroy": "^8.1.1",
     "bulma": "^0.9.3",
     "mpegts.js": "^1.6.7",
     "rxjs": "~6.6.0",

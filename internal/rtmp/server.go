@@ -120,6 +120,6 @@ func (s *server) liveHandler() http.HandlerFunc {
 
 func (s *server) streamsHandler() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-
+		render.JSON(w, http.StatusOK, s.streams.list())
 	}
 }

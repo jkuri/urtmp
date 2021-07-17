@@ -13,3 +13,55 @@ html, body
   -webkit-tap-highlight-color: transparent
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
+
+h1
+  font-size: 20px
+  color: $red
+  display: block
+  text-align: center
+  margin-top: 20px
+  font-weight: $weight-semibold
+
+.notification
+  margin: 15px 0
+  padding: 15px
+  border: 1px solid $border-default
+  border-radius: $border-radius
+  font-size: 13px
+  text-align: center
+  font-weight: $weight-medium
+
+.stream-item
+  margin: 10px 0
+  padding: 15px 10px
+  border: 1px solid $border-default
+  border-radius: $border-radius
+  font-size: 13px
+
+  .columns
+
+    .column
+
+      .column-content
+        height: 100%
+        display: flex
+        align-items: center
+
+        &.flex-column
+          flex-direction: column
+
+        .label
+          font-size: 12px
+          font-weight: $weight-semibold
+          color: $text-label
+          margin-bottom: 3px
+
+        .column-text
+          font-size: 13px
+          font-weight: $weight-medium
+
+.justify-center
+  justify-content: center
+
+.justify-end
+  justify-content: flex-end
