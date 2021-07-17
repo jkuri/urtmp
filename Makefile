@@ -18,4 +18,7 @@ install:
 	@go install github.com/jkuri/statik/...@latest
 	@cd web/urtmp && npm install
 
-.PHONY: build build_ui statik clean install
+docker:
+	@docker build -t jkuri/urtmp .
+
+.PHONY: build build_ui statik clean install docker
