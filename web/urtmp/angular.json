@@ -49,6 +49,9 @@
             "inlineStyleLanguage": "sass",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles/app.sass"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles"]
+            },
             "scripts": []
           },
           "configurations": {

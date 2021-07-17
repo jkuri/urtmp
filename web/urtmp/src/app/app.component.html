@@ -14,29 +14,7 @@
         <div class="column is-8 is-offset-2">
           <p class="notification" *ngIf="!streams?.length">No streams currently online.</p>
           <div class="streams-container" *ngIf="streams?.length">
-            <div class="stream-item" *ngFor="let s of streams">
-              <div class="columns">
-                <div class="column is-6">
-                  <div class="column-content justify-center flex-column">
-                    <span class="label">Identifier</span>
-                    <span class="column-text">{{ s.key }}</span>
-                  </div>
-                </div>
-                <div class="column is-2">
-                  <div class="column-content justify-center flex-column">
-                    <span class="label">Subscribers</span>
-                    <span class="column-text">{{ s.subscribers }}</span>
-                  </div>
-                </div>
-                <div class="column is-4">
-                  <div class="column-content justify-end">
-                    <button type="button" class="button is-small">
-                      <span>Live Stream</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <app-stream-list-item *ngFor="let s of streams" [stream]="s"></app-stream-list-item>
           </div>
         </div>
       </div>
