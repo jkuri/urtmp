@@ -5,9 +5,9 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/jkuri/rtmp-server/internal/core"
-	_ "github.com/jkuri/rtmp-server/internal/ui"
 	"github.com/jkuri/statik/fs"
+	"github.com/jkuri/urtmp/internal/core"
+	_ "github.com/jkuri/urtmp/internal/ui"
 )
 
 // server extends net/http Server with graceful shutdowns.
@@ -16,14 +16,16 @@ type server struct {
 	logger   *log.Logger
 	api      *http.ServeMux
 	listener net.Listener
+	ws       core.WebSocket
 }
 
 // New creates a new HTTP server instance.
-func New(api *http.ServeMux) core.HTTPServer {
+func New(api *http.ServeMux, ws core.WebSocket) core.HTTPServer {
 	return &server{
 		Server: &http.Server{},
 		api:    api,
 		logger: log.Default(),
+		ws:     ws,
 	}
 }
 
@@ -49,6 +51,7 @@ func (s *server) Stop() error {
 func (s *server) handler() *http.ServeMux {
 	mux := http.NewServeMux()
 	mux.Handle("/api/v1/", s.api)
+	mux.Handle("/ws", s.ws.UpstreamHandler())
 	mux.HandleFunc("/", s.ui())
 	return mux
 }

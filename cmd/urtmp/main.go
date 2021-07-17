@@ -4,17 +4,25 @@ import (
 	"log"
 	"os"
 
-	"github.com/jkuri/rtmp-server/internal/http"
-	"github.com/jkuri/rtmp-server/internal/rtmp"
+	"github.com/jkuri/urtmp/internal/http"
+	"github.com/jkuri/urtmp/internal/rtmp"
+	"github.com/jkuri/urtmp/internal/ws"
 )
 
 func main() {
 	errch := make(chan error, 1)
-	rtmp := rtmp.New()
-	http := http.New(rtmp.Handler())
+	ws := ws.New()
+	rtmp := rtmp.New(ws)
+	http := http.New(rtmp.Handler(), ws)
 
 	go func() {
 		if err := rtmp.Run("0.0.0.0:1935"); err != nil {
+			errch <- err
+		}
+	}()
+
+	go func() {
+		if err := ws.Run(); err != nil {
 			errch <- err
 		}
 	}()

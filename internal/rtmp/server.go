@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/jkuri/rtmp-server/internal/core"
-	"github.com/jkuri/rtmp-server/pkg/render"
+	"github.com/jkuri/urtmp/internal/core"
+	"github.com/jkuri/urtmp/pkg/render"
 	"github.com/nareix/joy5/format/flv"
 	"github.com/nareix/joy5/format/rtmp"
 )
@@ -17,12 +17,14 @@ type server struct {
 	listener net.Listener
 	server   *rtmp.Server
 	streams  *streams
+	ws       core.WebSocket
 	quitch   chan error
 }
 
-func New() core.RTMPServer {
+func New(ws core.WebSocket) core.RTMPServer {
 	return &server{
 		logger: log.Default(),
+		ws:     ws,
 		quitch: make(chan error, 1),
 	}
 }
